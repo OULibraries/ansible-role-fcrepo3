@@ -1,0 +1,4 @@
+---
+# tasks file for OULibraries.fcrepo3
+- include: install.yml
+  sudo: yes

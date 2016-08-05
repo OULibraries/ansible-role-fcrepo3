@@ -1,0 +1,75 @@
+---
+- name: Create downloads directory
+  file:
+    path: "/tmp/downloads"
+    state: directory
+    mode: 0655
+    owner: root
+    group: wheel
+
+# Oracle Java JDK is required by Djatoka, can't use OpenJDK
+- name: get JDK from Oracle
+  get_url:
+    url: "http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.rpm"
+    headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
+    dest: "/tmp/downloads/jdk-8u102-linux-x64.rpm"
+
+- name: Install JDK RPM
+  yum:
+    name: "/tmp/downloads/jdk-8u102-linux-x64.rpm"
+    state: present
+
+- name: Install yum packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - tomcat
+    - tomcat-admin-webapps
+
+- name: Create fcrepo3 database
+  mysql_db:
+    login_host: localhost
+    login_user: root
+    login_password: root
+    name: fcrepo3_repository_resdev
+    state: present
+
+- name: Get fcrepo3 installer from sourceforge
+  get_url:
+    url: "http://sourceforge.net/projects/fedora-commons/files/fedora/3.8.1/fcrepo-installer-3.8.1.jar/download"
+    dest: "/tmp/downloads/fcrepo-installer-3.8.1.jar"
+
+- name: Create install.properties for fcrepo3 install
+  template:
+    src: "install.properties.j2"
+    dest: "/tmp/downloads/install.properties"
+
+- name: Create fedora-profile.sh with fedora environment variables
+  template:
+    src: "fedora-profile.sh.j2"
+    dest: "/etc/profile.d/fedora-profile.sh"
+
+- name: Install fcrepo3
+  shell: java -jar /tmp/downloads/fcrepo-installer-3.8.1.jar /tmp/downloads/install.properties
+
+
+- name: Set permissions on fcrepo3 war
+  file:
+    path: /var/lib/tomcat/webapps/fedora.war
+    state: file
+    owner: tomcat
+    group: tomcat
+
+- name: Set permissions on FEDORA_HOME
+  file:
+    path: /usr/local/fedora
+    state: directory
+    owner: tomcat
+    group: tomcat
+    recurse: yes
+
+- name: Restart tomcat
+  service:
+    name: tomcat
+    state: restarted

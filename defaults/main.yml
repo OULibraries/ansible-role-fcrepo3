@@ -1,0 +1,6 @@
+---
+# defaults file for OULibraries.fcrepo3
+fedora_db_pass: root
+fedora_db_user: root
+fedora_db: fcrepo3_repository_resdev
+fedora_db_host: localhost
