@@ -2,9 +2,7 @@ export JAVA_HOME="/usr/java/jdk1.8.0_102/jre"
 export JAVA_OPTS="-Xms1024m -Xmx1024m -Djavax.net.ssl.trustStore=/usr/local/fedora/server/truststore -Djavax.net.ssl.trustStorePassword=tomcat"
 
 
-export FEDORA_HOME=/usr/local/fedora
+export FEDORA_HOME={{ fedora_home }}
 export CATALINA_HOME=/usr/share/tomcat
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CATALINA_HOME/lib
 export LD_LIBRARY_PATH
-
-export KAKADU_LIBRARY_PATH=/usr/local/djatoka/lib/Linux-x86-64

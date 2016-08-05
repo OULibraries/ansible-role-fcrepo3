@@ -6,3 +6,7 @@ fedora_db: fcrepo3_repository_resdev
 fedora_db_host: localhost
 
 fedora_pass: fedoraAdmin
+
+fedora_home: /usr/local/fedora
+
+

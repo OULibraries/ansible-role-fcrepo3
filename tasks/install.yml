@@ -53,7 +53,7 @@
 - name: Install fcrepo3
   shell: java -jar /tmp/downloads/fcrepo-installer-3.8.1.jar /tmp/downloads/install.properties
   args:
-    creates: /usr/local/fedora 
+    creates: {{ fedora_home }} 
 
 - name: Verifty that tomcat owns fcrepo3 war
   file:
@@ -64,7 +64,7 @@
 
 - name: Verify that tomcat owns FEDORA_HOME
   file:
-    path: /usr/local/fedora
+    path: {{ fedora_home }}
     state: directory
     owner: tomcat
     group: tomcat
@@ -77,7 +77,7 @@
 
 - name: Remove default deny XACML policies
   file:
-    path: "/usr/local/fedora/data/fedora-xacml-policies/repository-policies/default/{{ item }}"
+    path: "{{ fedora_home }}/data/fedora-xacml-policies/repository-policies/default/{{ item }}"
     state: absent
   with_items:
     - deny-inactive-or-deleted-objects-or-datastreams-if-not-administrator.xml
@@ -90,12 +90,12 @@
 - name: Deploy standard Islandora XACML policies
   git:
     repo: https://github.com/Islandora/islandora-xacml-policies.git
-    dest: /usr/local/fedora/data/fedora-xacml-policies/repository-policies/islandora
+    dest: {{ fedora_home }}/data/fedora-xacml-policies/repository-policies/islandora
     force: yes
     
 - name: Remove Islandora XACML policies allowing anonymous access
   file:
-    path: "/usr/local/fedora/data/fedora-xacml-policies/repository-policies/islandora/{{ item }}"
+    path: "{{ fedora_home }}/data/fedora-xacml-policies/repository-policies/islandora/{{ item }}"
     state: absent
   with_items:
     - permit-apim-to-anonymous-user.xml
@@ -103,7 +103,7 @@
      
 - name: Set ownership of Islandora XACML policies
   file:
-    path: /usr/local/fedora/data/fedora-xacml-policies/repository-policies/islandora/
+    path: "{{ fedora_home }}/data/fedora-xacml-policies/repository-policies/islandora/"
     state: directory
     owner: tomcat
     group: tomcat

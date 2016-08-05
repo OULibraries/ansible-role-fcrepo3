@@ -25,7 +25,7 @@ llstore.type=akubra-fs
 tomcat.home=/usr/share/tomcat
 fesl.authn.enabled=true
 database.mysql.jdbcURL=jdbc\:mysql\://{{fedora_db_host}}/{{ fedora_db }}?useUnicode\=true&amp;characterEncoding\=utf8&amp;autoReconnect\=true
-fedora.home=/usr/local/fedora
+fedora.home={{ fedora_home }}
 install.type=custom
 servlet.engine=included
 apim.ssl.required=false
