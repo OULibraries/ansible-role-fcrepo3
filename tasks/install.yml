@@ -100,10 +100,10 @@
   with_items:
     - permit-apim-to-anonymous-user.xml
     - permit-upload-to-anonymous-user.xml
-     
-- name: Set ownership of Islandora XACML policies
+
+- name: Verify that tomcat owns FEDORA_HOME
   file:
-    path: "{{ fedora_home }}/data/fedora-xacml-policies/repository-policies/islandora/"
+    path: "{{ fedora_home }}"
     state: directory
     owner: tomcat
     group: tomcat
