@@ -29,10 +29,10 @@
 
 - name: Create fcrepo3 database
   mysql_db:
-    login_host: localhost
-    login_user: root
-    login_password: root
-    name: fcrepo3_repository_resdev
+    login_host: "{{ fedora_db_host }}"
+    login_user: "{{ fedora_db_user }}"
+    login_password: "{{ fedora_db_pass }}"
+    name: "{{ fedora_db }}"
     state: present
 
 - name: Get fcrepo3 installer from sourceforge
