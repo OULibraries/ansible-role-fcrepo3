@@ -54,7 +54,7 @@
 - name: Install fcrepo3
   shell: java -jar /tmp/downloads/fcrepo-installer-3.8.1.jar /tmp/downloads/install.properties
   args:
-    creates: "{{ fedora_home }} "
+    creates: "{{ fedora_home }}/install/install.properties"
 
 - name: Verifty that tomcat owns fcrepo3 war
   file:
