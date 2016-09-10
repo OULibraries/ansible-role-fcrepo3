@@ -28,6 +28,13 @@
     - tomcat-native
     - tomcat-admin-webapps
 
+- name: Let the tomcat group see tomcat logs
+  file:
+    path: "/var/log/tomcat"
+    state: directory
+    owner: tomcat
+    group: tomcat
+
 - name: Create fcrepo3 database
   mysql_db:
     login_host: "{{ fedora_db_host }}"
