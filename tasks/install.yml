@@ -25,6 +25,7 @@
     state: present
   with_items:
     - tomcat
+    - tomcat-native
     - tomcat-admin-webapps
 
 - name: Create fcrepo3 database
