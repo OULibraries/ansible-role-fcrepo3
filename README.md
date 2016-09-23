@@ -34,9 +34,9 @@ fedora_home: /usr/local/fedora
 Dependencies
 ------------
 
-Probably depends on:
+Probably depends on OUlibraries.centos7
 
-* OUlibraries.centos7
+Doesn't actually depend on OULibraries.mariadb, but a compatible DB needs to go somewhere. 
 
 
 Example Playbook
