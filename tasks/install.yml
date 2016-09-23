@@ -38,6 +38,7 @@
 - name: Create fcrepo3 database
   mysql_db:
     login_host: "{{ fedora_db_host }}"
+    login_port: "{{ fedora_db_port }}"
     login_user: "{{ fedora_db_user }}"
     login_password: "{{ fedora_db_pass }}"
     name: "{{ fedora_db }}"
@@ -101,7 +102,7 @@
     repo: https://github.com/Islandora/islandora-xacml-policies.git
     dest: "{{ fedora_home }}/data/fedora-xacml-policies/repository-policies/islandora"
     force: yes
-    
+
 - name: Remove Islandora XACML policies allowing anonymous access
   file:
     path: "{{ fedora_home }}/data/fedora-xacml-policies/repository-policies/islandora/{{ item }}"
