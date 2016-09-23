@@ -1,4 +1,4 @@
-# How to point a newly created Islandora at existing Fedora data
+# How to point a newly created Fedora+GSearch at existing Fedora data
 
 This assumes that the Fedora version does not change. 
 
