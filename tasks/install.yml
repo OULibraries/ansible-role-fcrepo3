@@ -42,6 +42,8 @@
     login_user: "{{ fedora_db_user }}"
     login_password: "{{ fedora_db_pass }}"
     name: "{{ fedora_db }}"
+    encoding: "utf8"
+    collation: "utf8_bin"
     state: present
 
 - name: Get fcrepo3 installer from sourceforge
