@@ -55,7 +55,7 @@ Edit `$CATALINA_HOME/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/reposi
 
 At this point you should be able to see your content in Islandora, but it will not be searchable. 
 
-## 
+## Build a new Solr Index
 
 Create a new empty Solr index. This should happen fast. 
 
