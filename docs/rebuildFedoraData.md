@@ -1,4 +1,4 @@
-# How to point a newly created Islandora at existing Fedora data
+# How to point a newly created Fedora+GSearch at existing Fedora data
 
 This assumes that the Fedora version does not change. 
 
@@ -38,7 +38,7 @@ sudo -E -u tomcat $FEDORA_HOME/server/bin/fedora-rebuild.sh
 # -E to preserve environment variables, like $FEDORA_HOME
 ```
 
-Choose option 1 to rebuild the Resource Index. Then re-run fedora-rebuild.sh and choose option 2 to rebuild the SQL database.
+Choose option 1 to rebuild the Resource Index. Then re-run `fedora-rebuild.sh` and choose option 2 to rebuild the SQL database.
 
 ## Point GSearch at the Fedora object store
 
@@ -55,7 +55,7 @@ Edit `$CATALINA_HOME/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/reposi
 
 At this point you should be able to see your content in Islandora, but it will not be searchable. 
 
-## 
+## Build a new Solr Index
 
 Create a new empty Solr index. This should happen fast. 
 

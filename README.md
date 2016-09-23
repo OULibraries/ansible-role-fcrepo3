@@ -1,38 +1,54 @@
-Role Name
+fcrepo3
 =========
 
-A brief description of the role goes here.
+Installs Fedora Commons Repository 3.8.1
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role needs the following on the target host:
+* python-mysqldb
+* mysql
+* mysqldump 
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The following variables are used by this role:
+
+```yaml
+# Database settings for the Fedora repository
+fedora_db_pass: root
+fedora_db_user: root
+fedora_db: fcrepo3_repository_resdev
+fedora_db_host: localhost
+
+# Password for the fedoraAdmin user
+fedora_pass: fedoraAdmin
+
+# Fedora install path
+fedora_home: /usr/local/fedora
+```
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Probably depends on OUlibraries.centos7
+
+Doesn't actually depend on OULibraries.mariadb, but a compatible DB needs to go somewhere. 
+
 
 Example Playbook
 ----------------
+TBD
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
 
 License
 -------
-
-BSD
+TBD
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Written for the University of Oklahoma Libraries. 
