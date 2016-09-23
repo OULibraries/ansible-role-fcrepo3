@@ -1,15 +1,15 @@
 fcrepo3
 =========
 
-This role installs Fedora Commons Repository 3.8.1
+Installs Fedora Commons Repository 3.8.1
 
 Requirements
 ------------
 
-Requres:
+This role needs the following on the target host:
 * python-mysqldb
 * mysql
-
+* mysqldump 
 
 Role Variables
 --------------
@@ -39,19 +39,13 @@ Probably depends on:
 * OUlibraries.centos7
 
 
-
 Example Playbook
 ----------------
+TBD
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
 
 License
 -------
-
 TBD
 
 Author Information
