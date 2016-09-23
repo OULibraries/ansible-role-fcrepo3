@@ -14,19 +14,20 @@ This role needs the following on the target host:
 Role Variables
 --------------
 
-The following variables are used by this role:
+The following variables and defaults are used by this role:
 
 ```yaml
-# Database settings for the Fedora repository
+# DBMS Settings for Islandora Fedora
+fedora_db_host: "{{ mariadb_host }}"
+fedora_db_port: "{{ mariadb_port }}"
 fedora_db_pass: root
 fedora_db_user: root
 fedora_db: fcrepo3_repository_resdev
-fedora_db_host: localhost
 
-# Password for the fedoraAdmin user
+# Admin credentials
 fedora_pass: fedoraAdmin
 
-# Fedora install path
+# Install destination
 fedora_home: /usr/local/fedora
 ```
 
