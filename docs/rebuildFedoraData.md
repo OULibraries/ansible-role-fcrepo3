@@ -38,7 +38,7 @@ sudo -E -u tomcat $FEDORA_HOME/server/bin/fedora-rebuild.sh
 # -E to preserve environment variables, like $FEDORA_HOME
 ```
 
-Choose option 1 to rebuild the Resource Index. Then re-run fedora-rebuild.sh and choose option 2 to rebuild the SQL database.
+Choose option 1 to rebuild the Resource Index. Then re-run `fedora-rebuild.sh` and choose option 2 to rebuild the SQL database.
 
 ## Point GSearch at the Fedora object store
 
