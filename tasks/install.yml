@@ -121,7 +121,13 @@
     group: tomcat
     recurse: yes
 
+- name: Wait for magic
+  wait_for: timeout=60
+
 - name: Restart tomcat again
   service:
     name: tomcat
     state: restarted
+
+- name: Wait for magic
+  wait_for: timeout=60
