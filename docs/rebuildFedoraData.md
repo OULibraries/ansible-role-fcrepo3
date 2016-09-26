@@ -11,7 +11,7 @@ Stop tomcat. It can't be running when you do this.
 
 Edit `$FEDORA_HOME/server/config/spring/akubra-llstore.xml` to set the path for `fsDatastreamStore` and `fsObjectStore` to the location of the existing data. 
 
-```
+```xml
   <bean name="fsObjectStore" class="org.akubraproject.fs.FSBlobStore"
       singleton="true">
       <constructor-arg value="urn:example.org:fsObjectStore" />
@@ -22,7 +22,7 @@ Edit `$FEDORA_HOME/server/config/spring/akubra-llstore.xml` to set the path for 
 
 We're moving our object store off of `islandoradata1` file share in an effort to improve performance. We're provisionally locating this at `/usr/local/islandoradata`, but are likely to move it to a more canonical location at some point in the future. 
 
-```
+```xml
   <bean name="fsDatastreamStore" class="org.akubraproject.fs.FSBlobStore"
        singleton="true">
       <constructor-arg value="urn:example.org:fsDatastreamStore" />
