@@ -2,6 +2,8 @@
 
 This assumes that the Fedora version does not change. 
 
+Also, we're moving our Fedora object store off of the `islandoradata1` file share in an effort to improve performance. We're provisionally relocating this to `/usr/local/islandoradata`, but are likely to move it to a more canonical location at some point in the future.
+
 ## Stop Tomcat
 
 Stop tomcat. It can't be running when you do this. 
@@ -20,7 +22,7 @@ Edit `$FEDORA_HOME/server/config/spring/akubra-llstore.xml` to set the path for 
   </bean>
 ```
 
-We're moving our Fedora object store off of the `islandoradata1` file share in an effort to improve performance. We're provisionally locating this at `/usr/local/islandoradata`, but are likely to move it to a more canonical location at some point in the future. 
+ 
 
 ```xml
   <bean name="fsDatastreamStore" class="org.akubraproject.fs.FSBlobStore"
