@@ -6,19 +6,21 @@ This assumes that the Fedora version does not change.
 
 Stop tomcat. It can't be running when you do this. 
 
-## Edit the Fedora Skubra Storage properties
+## Edit the Fedora Akubra Storage properties
 
 
-Edit `$FEDORA_HOME/server/config/spring/akubra-llstore.xml` to set the path for fsDatastreamStore and fsObjectStore to the location of the existing data. 
+Edit `$FEDORA_HOME/server/config/spring/akubra-llstore.xml` to set the path for `fsDatastreamStore` and `fsObjectStore` to the location of the existing data. 
 
 ```
   <bean name="fsObjectStore" class="org.akubraproject.fs.FSBlobStore"
       singleton="true">
       <constructor-arg value="urn:example.org:fsObjectStore" />
- -    <constructor-arg value="/usr/local/fedora/data/objectStore"/>
+ -    <constructor-arg value="/usr/local/islandoradata/objectStore"/>
  +    <constructor-arg value="/mnt/islandoradata1/prod/fedora-data/objectStore"/>
   </bean>
 ```
+
+We're moving our object store off of `islandoradata1` file share in an effort to improve performance. We're provisionally locating this at `/usr/local/islandoradata`, but are likely to move it to a more canonical location at some point in the future. 
 
 ```
   <bean name="fsDatastreamStore" class="org.akubraproject.fs.FSBlobStore"
@@ -28,6 +30,7 @@ Edit `$FEDORA_HOME/server/config/spring/akubra-llstore.xml` to set the path for 
   +   <constructor-arg value="/mnt/islandoradata1/prod/fedora-data/datastreamStore"/>
   </bean>
 ```
+
 
 ## Rebuild the Fedora Resource Index and SQL Database
 
