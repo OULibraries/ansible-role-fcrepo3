@@ -48,7 +48,7 @@
 
 - name: Get fcrepo3 installer from sourceforge
   get_url:
-    url: "http://sourceforge.net/projects/fedora-commons/files/fedora/3.8.1/fcrepo-installer-3.8.1.jar/download"
+    url: "https://github.com/fcrepo3/fcrepo/releases/download/v3.8.1/fcrepo-installer-3.8.1.jar"
     timeout: 30
     dest: "/tmp/downloads/fcrepo-installer-3.8.1.jar"
 
