@@ -46,7 +46,7 @@
     collation: "utf8_bin"
     state: present
 
-- name: Get fcrepo3 installer from sourceforge
+- name: Get fcrepo3 installer from github
   get_url:
     url: "https://github.com/fcrepo3/fcrepo/releases/download/v3.8.1/fcrepo-installer-3.8.1.jar"
     timeout: 30
