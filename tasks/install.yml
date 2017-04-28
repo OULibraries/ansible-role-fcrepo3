@@ -86,6 +86,7 @@
   service:
     name: tomcat
     state: restarted
+    enabled: yes
 
 - name: Remove default deny XACML policies
   file:
