@@ -27,6 +27,8 @@
     - tomcat
     - tomcat-native
     - tomcat-admin-webapps
+    - mariadb
+    - MySQL-python
 
 - name: Let the tomcat group see tomcat logs
   file:
