@@ -31,7 +31,8 @@ TBD
 
 License
 -------
-TBD
+
+[MIT](https://github.com/OULibraries/ansible-role-fcrepo3/blob/master/LICENSE)
 
 Author Information
 ------------------
