@@ -13,3 +13,9 @@ fedora_pass: fedoraAdmin
 
 # Install destination
 fedora_home: /usr/local/fedora
+
+# Object store path
+fedora_fs_object_store: /usr/local/fedora/data/objectStore
+
+# Datastream store path
+fedora_fs_datastream_store: /usr/local/fedora/data/datastreamStore

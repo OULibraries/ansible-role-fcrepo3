@@ -30,13 +30,6 @@
     - mariadb
     - MySQL-python
 
-- name: Let the tomcat group see tomcat logs
-  file:
-    path: "/var/log/tomcat"
-    state: directory
-    owner: tomcat
-    group: tomcat
-
 - name: Create fcrepo3 database
   mysql_db:
     login_host: "{{ fedora_db_host }}"
@@ -69,20 +62,29 @@
   args:
     creates: "{{ fedora_home }}/install/install.properties"
 
-- name: Verifty that tomcat owns fcrepo3 war
-  file:
-    path: /var/lib/tomcat/webapps/fedora.war
-    state: file
-    owner: tomcat
-    group: tomcat
+- name: Replace akubra-llstore.xml with our desired configuration
+  template:
+    src: "akubra-llstore.xml.j2"
+    dest: "{{ fedora_home}}/server/config/spring/akubra-llstore.xml"
 
-- name: Verify that tomcat owns FEDORA_HOME
+- name: Verify that things exist and tomcat owns them
   file:
-    path: "{{ fedora_home }}"
-    state: directory
+    path: "{{ item.path }}"
+    state: "{{ item.state }}"
     owner: tomcat
     group: tomcat
     recurse: yes
+  with_items:
+    - path: /var/log/tomcat
+      state: directory
+    - path: "{{ fedora_home }}"
+      state: directory
+    - path: "{{ fedora_fs_object_store }}"
+      state: directory
+    - path: "{{ fedora_fs_datastream_store }}"
+      state: directory
+    - path: /var/lib/tomcat/webapps/fedora.war
+      state: file
 
 - name: Restart tomcat
   service:
