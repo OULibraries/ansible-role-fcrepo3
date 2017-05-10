@@ -83,6 +83,13 @@
       state: directory
     - path: "{{ fedora_fs_datastream_store }}"
       state: directory
+
+- name: Verify that things exist and tomcat owns them
+  file:
+    path: "{{ item.path }}"
+    state: "{{ item.state }}"
+    owner: tomcat
+    group: tomcat
     - path: /var/lib/tomcat/webapps/fedora.war
       state: file
 
