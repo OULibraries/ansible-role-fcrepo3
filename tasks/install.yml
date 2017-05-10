@@ -118,6 +118,13 @@
     - permit-apim-to-anonymous-user.xml
     - permit-upload-to-anonymous-user.xml
 
+- name: Configure deployed gsearch to use the Fedora object store
+- replace:
+    dest: /usr/share/tomcat/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/repository/FgsRepos/repository.properties
+    regexp: '^(fgsrepository.fedoraObjectDir   = )\/usr\/local\/islandoradata\/objectStore$'
+    replace: '\1{{ fedora_fs_object_store }}'
+    backup: yes
+
 - name: Verify that tomcat owns FEDORA_HOME
   file:
     path: "{{ fedora_home }}"
