@@ -90,6 +90,7 @@
     state: "{{ item.state }}"
     owner: tomcat
     group: tomcat
+  with_items:
     - path: /var/lib/tomcat/webapps/fedora.war
       state: file
 
