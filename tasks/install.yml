@@ -94,6 +94,16 @@
     - path: /var/lib/tomcat/webapps/fedora.war
       state: file
 
+- name: Set SELinux context for object store and datastream store
+  shell: >
+    semanage fcontext -a -t {{ item.context }} "{{ item.path }}(/.*)?" &&
+    restorecon -rv {{ item.path }}
+  with_items:
+    - path: "{{ fedora_fs_datastream_store }}"
+      context: tomcat_var_lib_t
+    - path: "{{ fedora_fs_object_store }}"
+      context: usr_t
+
 - name: Restart tomcat
   service:
     name: tomcat
