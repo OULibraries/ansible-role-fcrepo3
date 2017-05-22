@@ -3,16 +3,21 @@
   file:
     path: "/tmp/downloads"
     state: directory
-    mode: 0655
+    mode: 0755
     owner: root
     group: wheel
 
 # Oracle Java JDK is required by Djatoka, can't use OpenJDK
-- name: get JDK from Oracle
-  get_url:
-    url: "http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.rpm"
-    headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
-    dest: "/tmp/downloads/jdk-8u102-linux-x64.rpm"
+#- name: get JDK from Oracle
+#  get_url:
+#    url: "http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.rpm"
+#    headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
+#    dest: "/tmp/downloads/jdk-8u102-linux-x64.rpm"
+
+- name: Copy JDK
+  copy:
+    src: '../downloads/jdk-8u102-linux-x64.rpm'
+    dest: '/tmp/downloads/jdk-8u102-linux-x64.rpm'
 
 - name: Install JDK RPM
   yum:
